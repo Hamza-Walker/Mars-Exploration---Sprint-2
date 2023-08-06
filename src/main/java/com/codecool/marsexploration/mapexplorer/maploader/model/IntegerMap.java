@@ -1,11 +1,10 @@
 package com.codecool.marsexploration.mapexplorer.maploader.model;
 
-import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
 
 import java.util.Arrays;
 
 public class IntegerMap {
-    private int[][] representation;
+    private final int[][] representation;
 
     public IntegerMap(int[][] representation) {
         this.representation = representation;

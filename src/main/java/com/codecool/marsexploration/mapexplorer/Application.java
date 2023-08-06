@@ -33,7 +33,7 @@ public class Application {
 
         ConfigurationImpl config = new ConfigurationImpl(
                 2,                     // numberOfSteps
-                60,                    // timeOut
+                100,                    // timeOut
                 1,              // roverID
                 new Coordinate(0, 0),   // landingSpot
                 5,                      // sightRange

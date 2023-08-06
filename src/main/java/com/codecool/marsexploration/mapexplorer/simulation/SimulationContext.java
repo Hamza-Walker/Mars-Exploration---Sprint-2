@@ -2,6 +2,7 @@ package com.codecool.marsexploration.mapexplorer.simulation;
 
 import com.codecool.marsexploration.mapexplorer.exploration.ExplorationOutcome;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
+import com.codecool.marsexploration.mapexplorer.maploader.model.FoundResource;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
 import com.codecool.marsexploration.mapexplorer.rovers.Rover;
 import com.codecool.marsexploration.mapexplorer.maploader.model.IntegerMap;
@@ -21,6 +22,8 @@ public class SimulationContext {
     private Set<Integer> monitoredResources;
     private ExplorationOutcome explorationOutcome;
     public List <Coordinate> monitoredResourceCoordinate = new ArrayList<>();
+    List<FoundResource> foundResources = new ArrayList<>();
+
 
 
     public SimulationContext(
@@ -62,6 +65,9 @@ public class SimulationContext {
         this.step = step;
     }
 
+    public List<FoundResource> getFoundResources() {
+        return foundResources;
+    }
     public Rover getRover() {
         return rover;
     }

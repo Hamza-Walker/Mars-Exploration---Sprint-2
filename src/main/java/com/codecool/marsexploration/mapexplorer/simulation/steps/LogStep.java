@@ -27,7 +27,7 @@ public class LogStep implements SimulationStep {
         sb.append("----------------------------\n");
         sb.append("Rover ID: ").append(context.getRover().getId()).append("\n");
         sb.append("Current Position: ").append(context.getRover().getCurrentPosition()).append("\n");
-        sb.append("Monitored Resources: ").append(context.getMonitoredResources()).append("\n");
+        sb.append("Monitored Resources: ").append(context.getFoundResources().size()).append("\n");
         sb.append("Resources Collected: ").append(context.getRover().getResourceCoordinates()).append("\n");
         sb.append("Exploration Outcome: ").append(context.getExplorationOutcome()).append("\n");
         sb.append("----------------------------\n");

@@ -77,6 +77,7 @@ null
         List<SimulationStep> steps = Arrays.asList(
                 new MovementStep(),
                 new ScanningStep(),
+                new ResourceCollectionStep(),
                 new AnalysisStep(),
                 new LogStep(),
                 new StepIncrementStep()

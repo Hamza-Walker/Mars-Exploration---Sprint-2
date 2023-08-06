@@ -24,23 +24,27 @@ public class MovementStep implements SimulationStep {
         Queue <Coordinate> explorationQueue = new LinkedList<>();
         explorationQueue.offer(rover.getCurrentPosition());
 
-        List<Coordinate> path = AStarPathFinder.findPath(integerMap, new Coordinate(0,0), new Coordinate(0,7));
-        System.out.println(path);
+        if (!monitoredResourceCoordinates.isEmpty()) {
 
-        // create a function to move the rover
-        if (rover.getCurrentPosition() !=null ){
-            exploreAdjacentSpots(explorationQueue, integerMap, currentCoordinate );
-            System.out.println(" surrounding spots : " + explorationQueue);
+           // List<Coordinate> path = AStarPathFinder.findPath(integerMap, rover.getCurrentPosition(), new Coordinate(0,20));
+           // System.out.println(path);
+        }
+        if (rover.getCurrentPosition() != null) {
+            exploreAdjacentSpots(explorationQueue, integerMap, currentCoordinate);
+            // System.out.println(" surrounding spots : " + explorationQueue);
 
-            // get the a random coordinate from the ExplorationQueue and set the rovers new position
-            rover.setCurrentPosition(getRandomElementFromQueue(explorationQueue));
-
-            // if the rover is placed then clear the list
-            explorationQueue.clear();
-
+            // Move the rover and clear the queue if the rover is placed
+            moveRoverAndClearQueue(rover, explorationQueue);
         }
 
 
+    }
+    private void moveRoverAndClearQueue(Rover rover, Queue<Coordinate> explorationQueue) {
+        Coordinate newPosition = getRandomElementFromQueue(explorationQueue);
+        if (newPosition != null) {
+            rover.setCurrentPosition(newPosition);
+            explorationQueue.clear();
+        }
     }
     private Coordinate getRandomElementFromQueue(Queue<Coordinate> queue) {
 
@@ -49,7 +53,7 @@ public class MovementStep implements SimulationStep {
 
         for (Coordinate coordinate : queue) {
             if (randomIndex == 0) {
-                System.out.println(" rover moved to : " + coordinate);
+               // System.out.println(" rover moved to : " + coordinate);
                 Randomcoordinate = coordinate;
             }
             randomIndex--;
