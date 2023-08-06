@@ -12,13 +12,13 @@ import java.util.List;
 import java.util.Set;
 
 public class SimulationContext {
-    private int numberOfSteps;
-    private int stepsToTimeout;
+    private final int numberOfSteps;
+    private final int stepsToTimeout;
     private int step; // Add the step variable
     private Rover rover;
-    private Coordinate spaceshipLocation;
+    private final Coordinate spaceshipLocation;
     private Map map;
-    private IntegerMap integerMap; // Add the IntegerMap property
+    private final IntegerMap integerMap; // Add the IntegerMap property
     private Set<Integer> monitoredResources;
     private ExplorationOutcome explorationOutcome;
     public List <Coordinate> monitoredResourceCoordinate = new ArrayList<>();
