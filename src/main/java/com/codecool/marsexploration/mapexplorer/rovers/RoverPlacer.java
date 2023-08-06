@@ -1,11 +1,7 @@
 package com.codecool.marsexploration.mapexplorer.rovers;
 
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
-import com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder.IntegerMap;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import com.codecool.marsexploration.mapexplorer.maploader.model.IntegerMap;
 
 public class RoverPlacer {
     public void deployRover(IntegerMap integerMap, Rover rover, Coordinate emptyAdjacentSpot) {
@@ -45,35 +41,6 @@ public class RoverPlacer {
         return x >= 0 && x < dimension && y >= 0 && y < dimension;
     }
 
-    public Coordinate getRandomEmptyAdjacentSpot(IntegerMap integerMap, Coordinate coordinate) {
-        List<Coordinate> emptyAdjacentSpots = new ArrayList<>();
-        int x = coordinate.getX();
-        int y = coordinate.getY();
-
-        if (isEmptySpot(x - 1, y, integerMap)) {
-            emptyAdjacentSpots.add(new Coordinate(x - 1, y));
-        }
-        if (isEmptySpot(x + 1, y, integerMap)) {
-            emptyAdjacentSpots.add(new Coordinate(x + 1, y));
-        }
-        if (isEmptySpot(x, y - 1, integerMap)) {
-            emptyAdjacentSpots.add(new Coordinate(x, y - 1));
-        }
-        if (isEmptySpot(x, y + 1, integerMap)) {
-            emptyAdjacentSpots.add(new Coordinate(x, y + 1));
-        }
-
-        if (!emptyAdjacentSpots.isEmpty()) {
-            Random random = new Random();
-            int randomIndex = random.nextInt(emptyAdjacentSpots.size());
-            Coordinate chosenSpot = emptyAdjacentSpots.get(randomIndex);
-            System.out.println("Current Position: " + coordinate);
-            System.out.println("Chosen Destination: " + chosenSpot);
-            return chosenSpot;
-        }
-
-        return null;
-    }
 
     public boolean isEmptySpot(int x, int y, IntegerMap integerMap) {
         return x >= 0 && x < integerMap.getDimension() &&

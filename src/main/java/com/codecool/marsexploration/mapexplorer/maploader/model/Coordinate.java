@@ -27,12 +27,17 @@ public class Coordinate {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Coordinate)) return false;
-        Coordinate other = (Coordinate) o;
-        return x == other.x && y == other.y;
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Coordinate other = (Coordinate) obj;
+        return this.x == other.x && this.y == other.y;
     }
+
 
     @Override
     public int hashCode() {

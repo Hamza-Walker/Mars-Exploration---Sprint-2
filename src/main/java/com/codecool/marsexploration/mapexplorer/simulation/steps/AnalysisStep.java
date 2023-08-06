@@ -6,7 +6,6 @@ import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
 import com.codecool.marsexploration.mapexplorer.rovers.Rover;
 import com.codecool.marsexploration.mapexplorer.simulation.SimulationContext;
 import com.codecool.marsexploration.mapexplorer.simulation.SimulationStep;
-import com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder.IntegerMap;
 
 
 import java.util.HashSet;

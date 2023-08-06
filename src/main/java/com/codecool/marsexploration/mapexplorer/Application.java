@@ -7,11 +7,8 @@ import com.codecool.marsexploration.mapexplorer.configuration.ConfigurationValid
 import com.codecool.marsexploration.mapexplorer.maploader.MapLoader;
 import com.codecool.marsexploration.mapexplorer.maploader.MapLoaderImpl;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
-import com.codecool.marsexploration.mapexplorer.rovers.Rover;
 import com.codecool.marsexploration.mapexplorer.rovers.RoverPlacer;
 import com.codecool.marsexploration.mapexplorer.simulation.ExplorationSimulator;
-import com.codecool.marsexploration.mapexplorer.simulation.SimulationContext;
-import com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder.IntegerMap;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +17,7 @@ public class Application {
     private static final String workDir = "src/main";
 
     public static void main(String[] args) {
-        String mapFile = workDir + "/resources/exploration-2.map";
+        String mapFile = workDir + "/resources/exploration-1.map";
         MapLoader mapLoader = new MapLoaderImpl();
         RoverPlacer roverPlacer = new RoverPlacer();
         ConfigurationValidator configurationValidator = new ConfigurationValidatorImpl();
@@ -36,7 +33,7 @@ public class Application {
 
         ConfigurationImpl config = new ConfigurationImpl(
                 2,                     // numberOfSteps
-                50,                    // timeOut
+                60,                    // timeOut
                 1,              // roverID
                 new Coordinate(0, 0),   // landingSpot
                 5,                      // sightRange

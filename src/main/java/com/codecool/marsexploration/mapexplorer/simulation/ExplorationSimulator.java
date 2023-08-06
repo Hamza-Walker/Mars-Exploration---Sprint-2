@@ -2,14 +2,13 @@ package com.codecool.marsexploration.mapexplorer.simulation;
 
 import com.codecool.marsexploration.mapexplorer.configuration.Configuration;
 import com.codecool.marsexploration.mapexplorer.configuration.ConfigurationValidator;
-import com.codecool.marsexploration.mapexplorer.exploration.ExplorationOutcome;
 import com.codecool.marsexploration.mapexplorer.maploader.MapLoader;
 import com.codecool.marsexploration.mapexplorer.maploader.MapLoaderImpl;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
 import com.codecool.marsexploration.mapexplorer.rovers.Rover;
 import com.codecool.marsexploration.mapexplorer.rovers.RoverPlacer;
 import com.codecool.marsexploration.mapexplorer.simulation.steps.*;
-import com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder.IntegerMap;
+import com.codecool.marsexploration.mapexplorer.maploader.model.IntegerMap;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +29,7 @@ public class ExplorationSimulator {
     public SimulationContext simulateExploration(Configuration config) {
         // Generate the context by loading the map and validating the configuration
         String workDir = "src/main";
-        String mapFile = workDir + "/resources/exploration-2.map";
+        String mapFile = config.mapPath();
         MapLoader mapLoader = new MapLoaderImpl();
         IntegerMap integerMap = mapLoader.createIntegerMap(mapFile);
         System.out.println(integerMap);

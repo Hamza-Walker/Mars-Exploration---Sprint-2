@@ -1,12 +1,11 @@
     package com.codecool.marsexploration.mapexplorer.maploader;
 
     import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
-    import com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder.IntegerMap;
+    import com.codecool.marsexploration.mapexplorer.maploader.model.IntegerMap;
 
     import java.io.IOException;
     import java.nio.file.Files;
     import java.nio.file.Paths;
-    import java.util.HashMap;
     import java.util.List;
 
     public class MapLoaderImpl implements MapLoader {

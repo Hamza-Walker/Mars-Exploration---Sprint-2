@@ -4,7 +4,6 @@ import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
 import com.codecool.marsexploration.mapexplorer.rovers.Rover;
 import com.codecool.marsexploration.mapexplorer.simulation.SimulationContext;
 import com.codecool.marsexploration.mapexplorer.simulation.SimulationStep;
-import com.codecool.marsexploration.mapexplorer.simulation.steps.aStarPathFinder.AStarPathFinder;
 
 import java.util.List;
 

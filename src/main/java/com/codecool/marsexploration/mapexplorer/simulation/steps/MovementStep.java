@@ -1,105 +1,65 @@
 package com.codecool.marsexploration.mapexplorer.simulation.steps;
 
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
+import com.codecool.marsexploration.mapexplorer.maploader.model.IntegerMap;
 import com.codecool.marsexploration.mapexplorer.rovers.Rover;
 import com.codecool.marsexploration.mapexplorer.rovers.RoverPlacer;
 import com.codecool.marsexploration.mapexplorer.simulation.SimulationContext;
 import com.codecool.marsexploration.mapexplorer.simulation.SimulationStep;
-import com.codecool.marsexploration.mapexplorer.simulation.steps.aStarPathFinder.AStarPathFinder;
-import com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder.IntegerMap;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class MovementStep implements SimulationStep {
 
-    private AStarPathFinder pathFinder = new AStarPathFinder();
-
     @Override
     public void execute(SimulationContext context) {
-        IntegerMap integerMap = context.getIntegerMap();
+
+        int numberOfSteps = context.getNumberOfSteps();
+        IntegerMap integerMap =context.getIntegerMap();
         Rover rover = context.getRover();
         RoverPlacer roverPlacer = new RoverPlacer();
-        // Get the number of steps from the context
-        int numberOfSteps = context.getNumberOfSteps();
+        List<Coordinate> monitoredResourceCoordinates = context.getMonitoredResourceCoordinate();
+        Coordinate currentCoordinate = rover.getCurrentPosition();
 
-        // Initialize a queue for systematic exploration
-        Queue<Coordinate> explorationQueue = new LinkedList<>();
+        Queue <Coordinate> explorationQueue = new LinkedList<>();
         explorationQueue.offer(rover.getCurrentPosition());
 
-        List<Coordinate> monitoredResourceCoordinates = context.getMonitoredResourceCoordinate();
+        List<Coordinate> path = AStarPathFinder.findPath(integerMap, new Coordinate(0,0), new Coordinate(0,7));
+        System.out.println(path);
 
+        // create a function to move the rover
+        if (rover.getCurrentPosition() !=null ){
+            exploreAdjacentSpots(explorationQueue, integerMap, currentCoordinate );
+            System.out.println(" surrounding spots : " + explorationQueue);
 
-        //System.out.println(explorationQueueList);
-        // Iterate for the specified number of steps
-        for (int step = 0; step < numberOfSteps; step++) {
-            Coordinate currentCoordinate = explorationQueue.poll();
-            System.out.println("CurrentCoordinate" + currentCoordinate);
-            // Deploy rover to the current coordinate
-            roverPlacer.deployRover(integerMap, rover, currentCoordinate);
+            // get the a random coordinate from the ExplorationQueue and set the rovers new position
+            rover.setCurrentPosition(getRandomElementFromQueue(explorationQueue));
 
-            context.setRover(rover); //
+            // if the rover is placed then clear the list
+            explorationQueue.clear();
 
-            // Check if there are monitored resource coordinates
-            if (monitoredResourceCoordinates.isEmpty()) {
-                // Explore adjacent empty spots and add them to the queue
-                if (currentCoordinate != null) {
-                    exploreAdjacentSpots(explorationQueue, integerMap, currentCoordinate);
-                }
-            } else {
-                // Find path to the first monitored resource
-                List<Coordinate> pathToResource = pathFinder.findPath(integerMap, rover.getCurrentPosition(), monitoredResourceCoordinates.iterator().next());
-                System.out.println("path to resource : " + pathToResource);
-                if (pathToResource != null) {
-                    // Create a copy of the rover for simulation purposes
-                    Rover simulatedRover = rover;
-
-                    // Follow the path to the resource
-                    for (Coordinate pathCoordinate : pathToResource) {
-                        // Deploy simulated rover to the path coordinate
-                        roverPlacer.deployRover(integerMap, simulatedRover, pathCoordinate);
-
-                        // Delay for a short period to simulate rover movement (optional)
-                        try {
-                            Thread.sleep(2); // Adjust the delay time as needed
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    // Update the actual rover's position to the last coordinate of the path
-                    roverPlacer.deployRover(integerMap, rover, pathToResource.get(pathToResource.size() - 1));
-                }
-
-                // Remove the first coordinate from monitored resources
-                monitoredResourceCoordinates.remove(monitoredResourceCoordinates.iterator().next());
-            }
-
-
-            // Delay for a short period to simulate rover movement (optional)
-            try {
-                Thread.sleep(2); // Adjust the delay time as needed
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
 
-        // If exploration outcome is determined, the rover should be returning to the landing spot.
-        // The logic for this part is not shown here as it depends on the actual implementation of the return routine.
 
-        // Todo:
-        // When a resource is monitored save the Coordinate [X]
-        // use the aStar Algorithm to use the current location to get the resource and print a statement and put that in a new class
-        // resource collection step
-        // then fix the all star algorithm so that it receives the start, target and map to do its thing
-
-        // Begin the return phase where the rover returns to the spaceShip
-
-        // check how the ExplorationOutcome influences the program
-        //
     }
+    private Coordinate getRandomElementFromQueue(Queue<Coordinate> queue) {
+
+        int randomIndex = new Random().nextInt(queue.size());
+        Coordinate Randomcoordinate = null;
+
+        for (Coordinate coordinate : queue) {
+            if (randomIndex == 0) {
+                System.out.println(" rover moved to : " + coordinate);
+                Randomcoordinate = coordinate;
+            }
+            randomIndex--;
+
+        }
+        return Randomcoordinate;
+
+    }
+
+
 
     private void exploreAdjacentSpots(Queue<Coordinate> explorationQueue, IntegerMap integerMap, Coordinate coordinate) {
 
@@ -122,4 +82,5 @@ public class MovementStep implements SimulationStep {
             explorationQueue.offer(new Coordinate(x, y + 1));
         }
     }
+
 }

@@ -1,8 +1,9 @@
 package com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder;
 
+import com.codecool.marsexploration.mapexplorer.maploader.model.IntegerMap;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class PathFinder{
 

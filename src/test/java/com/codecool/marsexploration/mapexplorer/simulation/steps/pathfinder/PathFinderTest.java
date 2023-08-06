@@ -1,8 +1,6 @@
 package com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder;
 
-import com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder.IntegerMap;
-import com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder.PathFinder;
-import com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder.Point;
+import com.codecool.marsexploration.mapexplorer.maploader.model.IntegerMap;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

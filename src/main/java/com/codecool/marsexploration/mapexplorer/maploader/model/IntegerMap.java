@@ -1,4 +1,4 @@
-package com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder;
+package com.codecool.marsexploration.mapexplorer.maploader.model;
 
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
 

@@ -4,10 +4,9 @@ import com.codecool.marsexploration.mapexplorer.exploration.ExplorationOutcome;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
 import com.codecool.marsexploration.mapexplorer.rovers.Rover;
-import com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder.IntegerMap;
+import com.codecool.marsexploration.mapexplorer.maploader.model.IntegerMap;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 

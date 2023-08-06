@@ -5,7 +5,7 @@ import com.codecool.marsexploration.mapexplorer.exploration.ExplorationOutcome;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Map;
 import com.codecool.marsexploration.mapexplorer.rovers.Rover;
-import com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder.IntegerMap;
+import com.codecool.marsexploration.mapexplorer.maploader.model.IntegerMap;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;

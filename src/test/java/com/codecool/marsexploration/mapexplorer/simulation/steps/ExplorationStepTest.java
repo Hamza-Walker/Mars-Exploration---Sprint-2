@@ -2,9 +2,9 @@ package com.codecool.marsexploration.mapexplorer.simulation.steps;
 
 import com.codecool.marsexploration.mapexplorer.exploration.ExplorationOutcome;
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
+import com.codecool.marsexploration.mapexplorer.maploader.model.IntegerMap;
 import com.codecool.marsexploration.mapexplorer.rovers.Rover;
 import com.codecool.marsexploration.mapexplorer.simulation.SimulationContext;
-import com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder.IntegerMap;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;

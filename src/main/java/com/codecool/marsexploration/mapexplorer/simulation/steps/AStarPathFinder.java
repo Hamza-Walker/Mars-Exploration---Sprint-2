@@ -1,36 +1,37 @@
-package com.codecool.marsexploration.mapexplorer.simulation.steps.aStarPathFinder;
+package com.codecool.marsexploration.mapexplorer.simulation.steps;
 
 import com.codecool.marsexploration.mapexplorer.maploader.model.Coordinate;
-import com.codecool.marsexploration.mapexplorer.simulation.steps.pathfinder.IntegerMap;
+import com.codecool.marsexploration.mapexplorer.maploader.model.IntegerMap;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class AStarPathFinder {
     private static final int DIAGONAL_COST = 14;
     private static final int VERTICAL_HORIZONTAL_COST = 10;
 
     public static List<Coordinate> findPath(IntegerMap integerMap, Coordinate start, Coordinate end) {
+
+
         int[][] mapData = new int[integerMap.getDimension()][integerMap.getDimension()];
+
         for (int y = 0; y < mapData.length; y++) {
             for (int x = 0; x < mapData[y].length; x++) {
                 mapData[y][x] = integerMap.getValue(x, y);
             }
         }
 
+
         int width = integerMap.getDimension();
         int height = integerMap.getDimension();
 
         if (!isValidCoordinate( start, width, height) || !isValidCoordinate(end, width, height)) {
+            System.out.println(" is not a valid coordinate ");
             return null;
         }
 
         if (mapData[end.getY()][end.getX()] != 0) {
             // The end point is not reachable, return null
+            System.out.println("The end point is not reachable, return null");
             return null;
         }
 
@@ -148,6 +149,7 @@ public class AStarPathFinder {
         public Node getPrevious() {
             return previous;
         }
+
 
         @Override
         public int compareTo(Node other) {
