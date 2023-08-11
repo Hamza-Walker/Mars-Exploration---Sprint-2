@@ -26,8 +26,8 @@ public class MovementStep implements SimulationStep {
 
         if (!monitoredResourceCoordinates.isEmpty()) {
 
-           // List<Coordinate> path = AStarPathFinder.findPath(integerMap, rover.getCurrentPosition(), new Coordinate(0,20));
-           // System.out.println(path);
+            List<Coordinate> path = AStarPathFinder.findPath(integerMap, rover.getCurrentPosition(), new Coordinate(0,20));
+            System.out.println(path);
         }
         if (rover.getCurrentPosition() != null) {
             exploreAdjacentSpots(explorationQueue, integerMap, currentCoordinate);

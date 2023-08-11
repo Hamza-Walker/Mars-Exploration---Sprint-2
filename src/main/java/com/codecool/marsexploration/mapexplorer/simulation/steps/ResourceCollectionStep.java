@@ -11,6 +11,7 @@ public class ResourceCollectionStep implements SimulationStep {
 
     @Override
     public void execute(SimulationContext context) {
+        // currently not working
         Rover rover = context.getRover();
         Coordinate roverPosition = rover.getCurrentPosition();
 
